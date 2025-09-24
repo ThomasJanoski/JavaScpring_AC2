@@ -2,7 +2,6 @@ package com.facens.ac1_parte2;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,17 +12,20 @@ import com.facens.ac1_parte2.Entities.Filme;
 import com.facens.ac1_parte2.Repositories.DiretorRepository;
 import com.facens.ac1_parte2.Repositories.FilmeRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @SpringBootApplication
+@RequiredArgsConstructor
 public class Ac1Parte2Application {
+	private final DiretorRepository diretorRepository;
+	private final FilmeRepository filmeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Ac1Parte2Application.class, args);
 	}
 
 	@Bean
-	protected CommandLineRunner run(
-			@Autowired DiretorRepository diretorRepository,
-			@Autowired FilmeRepository filmeRepository) {
+	protected CommandLineRunner run() {
 		return args -> {
 			Diretor diretor_a = Diretor.builder()
 					.nome("Steven Spielberg")
