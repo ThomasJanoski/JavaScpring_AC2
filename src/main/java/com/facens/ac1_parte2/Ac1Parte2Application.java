@@ -52,27 +52,27 @@ public class Ac1Parte2Application {
 			diretorRepository.saveAll(List.of(diretor_a, diretor_b));
 			filmeRepository.saveAll(List.of(filme_a, filme_b, filme_c));
 
-			System.out.println("Total Filmes");
+			System.out.println("\nTotal Filmes");
 			List<Filme> Listafilmes = filmeRepository.findAll();
 			Listafilmes.forEach(System.out::println);
 
-			System.out.println("Francis Ford Coppola e seus filmes:");
+			System.out.println("\nFrancis Ford Coppola e seus filmes:");
 			Diretor diretor = diretorRepository.findDiretorByIdWithFilmes(diretor_b.getId().intValue());
 			diretor.getFilmes().forEach(System.out::println);
 
-			System.out.println("Filmes com duração maior que 150 minutos:");
+			System.out.println("\nFilmes com duração maior que 150 minutos:");
 			List<Filme> filmesLongos = filmeRepository.findByDuracaoGreaterThan(150);
 			filmesLongos.forEach(System.out::println);
 
-			System.out.println("Filmes com duração menor que 150 minutos:");
+			System.out.println("\nFilmes com duração menor que 150 minutos:");
 			List<Filme> filmesCurtos = filmeRepository.findByDuracaoLessThanEqual(150);
 			filmesCurtos.forEach(System.out::println);
 
-			System.out.println("Filmes com título começando com 'A':");
+			System.out.println("\nFilmes com título começando com 'A':");
 			List<Filme> filmesComA = filmeRepository.findByTituloStartingWith("A");
 			filmesComA.forEach(System.out::println);
 
-			System.out.println("Diretores com nome começando com 'Steven':");
+			System.out.println("\nDiretores com nome começando com 'Steven':");
 			List<Diretor> diretoresNome = diretorRepository.findByNomeStartingWith("Steven");
 			diretoresNome.forEach(System.out::println);
 		};
